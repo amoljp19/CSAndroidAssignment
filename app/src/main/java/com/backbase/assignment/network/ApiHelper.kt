@@ -5,16 +5,14 @@ import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-interface ApiService {
+interface ApiHelper {
 
-    @GET("/3/movie/now_playing")
     suspend fun getplayingMovies(
         @Query("language") language: String,
         @Query("page") page: String,
         @Query("api_key") api_Key: String
     ): Response<List<MovieResult>>
 
-    @GET("/3/movie/now_playing")
     suspend fun getPopularMovies(
         @Query("api_key") api_Key: String,
         @Query("language") language: String,
