@@ -6,9 +6,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.backbase.assignment.R
 import com.backbase.assignment.ui.movie.MoviesAdapter
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
+
+    private val mainViewModel : MainViewModel by viewModels()
 
     private val baseUrl = "https://api.themoviedb.org/3"
     private val yourKey = ""
