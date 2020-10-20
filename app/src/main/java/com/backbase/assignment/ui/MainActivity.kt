@@ -6,9 +6,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.backbase.assignment.R
 import com.backbase.assignment.ui.movie.MoviesAdapter
-import com.google.gson.JsonArray
-import com.google.gson.JsonParser
-import java.net.URL
 
 
 class MainActivity : AppCompatActivity() {
@@ -30,14 +27,14 @@ class MainActivity : AppCompatActivity() {
         moviesAdapter = MoviesAdapter()
         recyclerView.adapter = moviesAdapter
 
-        fetchMovies()
+       // fetchMovies()
     }
 
-    private fun fetchMovies() {
-        val jsonString =
-            URL("$baseUrl/movie/now_playing?language=en-US&page=undefined&api_key=$yourKey").readText()
-        val jsonObject = JsonParser.parseString(jsonString).asJsonObject
-        moviesAdapter.items = jsonObject["results"] as JsonArray
-        moviesAdapter.notifyDataSetChanged()
-    }
+//    private fun fetchMovies() {
+//        val jsonString =
+//            URL("$baseUrl/movie/now_playing?language=en-US&page=undefined&api_key=$yourKey").readText()
+//        val jsonObject = JsonParser.parseString(jsonString).asJsonObject
+//        moviesAdapter.items = jsonObject["results"] as JsonArray
+//        moviesAdapter.notifyDataSetChanged()
+//    }
 }
