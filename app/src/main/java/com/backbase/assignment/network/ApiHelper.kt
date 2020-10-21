@@ -1,8 +1,7 @@
 package com.backbase.assignment.network
 
-import MovieResult
+import com.backbase.assignment.model.MovieResult
 import retrofit2.Response
-import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface ApiHelper {
