@@ -11,7 +11,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    private val mainViewModel : MainViewModel by viewModels()
+    //private val mainViewModel : MainViewModel by viewModels()
 
     private val baseUrl = "https://api.themoviedb.org/3"
     private val yourKey = ""
