@@ -1,5 +1,7 @@
 package com.backbase.assignment.di.module
 
+import com.backbase.assignment.network.ApiHelper
+import com.backbase.assignment.network.ApiHelperImpl
 import com.backbase.assignment.network.ApiService
 import com.backbase.assignment.utils.BASE_URL
 import dagger.Module
@@ -40,5 +42,10 @@ class ApplicationModule {
     @Provides
     @Singleton
     fun provideApiService(retrofit: Retrofit) = retrofit.create(ApiService::class.java)
+
+    @Provides
+    @Singleton
+    fun provideApiHelper(apiHelper: ApiHelperImpl): ApiHelper = apiHelper
+
 
 }
