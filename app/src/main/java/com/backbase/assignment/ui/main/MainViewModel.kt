@@ -14,8 +14,8 @@ class MainViewModel @ViewModelInject constructor(
     private val mainRepository: MainRepository
 ) : ViewModel() {
 
-    private val _popularMovies = MutableLiveData<Resource<List<MovieResult>>>()
-    val popularMovies: LiveData<Resource<List<MovieResult>>>
+    private val _popularMovies = MutableLiveData<List<MovieResult>>()
+    val popularMovies: LiveData<List<MovieResult>>
         get() = _popularMovies
 
  init {
@@ -25,10 +25,9 @@ class MainViewModel @ViewModelInject constructor(
     private fun fetchPopularMovies(){
 
         viewModelScope.launch {
-            _popularMovies.postValue(Resource.Loading())
                 mainRepository.getPopularMovies("55957fcf3ba81b137f8fc01ac5a31fb5", "en-US", "1").let {
                     if (it.isSuccessful) {
-                        _popularMovies.postValue(Resource.Success(it.body()!!))
+                        _popularMovies.postValue(it.body()!!)
                     }
                 }
         }

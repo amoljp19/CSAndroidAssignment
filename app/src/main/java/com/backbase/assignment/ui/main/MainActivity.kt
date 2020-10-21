@@ -3,42 +3,57 @@ package com.backbase.assignment.ui.main
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.backbase.assignment.R
+import com.backbase.assignment.model.MovieResult
 import com.backbase.assignment.ui.movie.MoviesAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.activity_main.*
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private val mainViewModel : MainViewModel by viewModels()
 
-    private val baseUrl = "https://api.themoviedb.org/3"
-    private val yourKey = ""
-
-    private lateinit var moviesAdapter: MoviesAdapter
-    private lateinit var recyclerView: RecyclerView
+    private lateinit var mainAdapter: MainAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setupUI()
+        setupObserver()
+    }
 
-        recyclerView = findViewById(R.id.recyclerView)
+
+    private fun setupUI() {
         recyclerView.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
-        moviesAdapter = MoviesAdapter()
-        recyclerView.adapter = moviesAdapter
+        recyclerView.addItemDecoration(
+            DividerItemDecoration(
+                recyclerView.context,
+                (recyclerView.layoutManager as LinearLayoutManager).orientation
+            )
+        )
 
-       // fetchMovies()
+        recyclerView.adapter = mainAdapter
     }
 
-//    private fun fetchMovies() {
-//        val jsonString =
-//            URL("$baseUrl/movie/now_playing?language=en-US&page=undefined&api_key=$yourKey").readText()
-//        val jsonObject = JsonParser.parseString(jsonString).asJsonObject
-//        moviesAdapter.items = jsonObject["results"] as JsonArray
-//        moviesAdapter.notifyDataSetChanged()
-//    }
+    private fun setupObserver() {
+        mainViewModel.popularMovies.observe(this, Observer {
+          it.let { movies -> renderList(movies) }
+        })
+    }
+
+    private fun renderList(movies: List<MovieResult>) {
+        mainAdapter = MainAdapter(movies as ArrayList<MovieResult>)
+        recyclerView.adapter = mainAdapter
+        recyclerView.adapter?.notifyDataSetChanged()
+    }
+
+
+
 }
