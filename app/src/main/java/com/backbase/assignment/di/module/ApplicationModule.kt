@@ -4,6 +4,8 @@ import com.backbase.assignment.network.ApiHelper
 import com.backbase.assignment.network.ApiHelperImpl
 import com.backbase.assignment.network.ApiService
 import com.backbase.assignment.utils.BASE_URL
+import com.backbase.assignment.utils.MovieListJsonAdapter
+import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -34,7 +36,10 @@ class ApplicationModule {
     @Singleton
     fun provideRetrofit(okHttpClient: OkHttpClient, BASE_URL: String): Retrofit =
         Retrofit.Builder()
-            .addConverterFactory(MoshiConverterFactory.create())
+            .addConverterFactory(MoshiConverterFactory.create(
+                 Moshi.Builder()
+                .add(MovieListJsonAdapter())
+                .build()))
             .baseUrl(BASE_URL)
             .client(okHttpClient)
             .build()
