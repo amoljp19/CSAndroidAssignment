@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
             )
         )
 
-        recyclerView.adapter = mainAdapter
+        //recyclerView.adapter = mainAdapter
     }
 
     private fun setupObserver() {
