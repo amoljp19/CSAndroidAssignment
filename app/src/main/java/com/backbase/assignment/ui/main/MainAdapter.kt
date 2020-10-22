@@ -18,7 +18,7 @@ class MainAdapter(
             itemView.releaseDate.text = movieResult.releaseDate
 
             Glide.with(itemView.poster.context)
-                .load(movieResult.posterPath)
+                .load("https://image.tmdb.org/t/p/w500" + movieResult.posterPath)
                 .into(itemView.poster)
         }
     }
