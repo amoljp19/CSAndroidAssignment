@@ -1,13 +1,34 @@
 # Android Assignment CS
-This is a placeholder README file with the instructions for the assingment. We expect you to build your own README file.
 
-## Instructions
+This repository contains a sample app that implements **MVVM + RecyclerView + Retrofit + Dagger-Hilt + Coroutines + Moshi + Glide** using **Kotlin**.
 
-You can find all the instrucrtions for the assingment on [Assingment Instructions](https://docs.google.com/document/d/1zCIIkybu5OkMOcsbuC106B92uqOb3L2PPo9DNFBjuWg/edit?usp=sharing).
+## The app has following packages:
 
-## Delivering the code
-* Fork this repo and select the access level as private **[Check how to do it here](https://confluence.atlassian.com/bitbucket/forking-a-repository-221449527.html)**
-* Go to settings and add the user **m-cs-recruitment@backbase.com** with the read access **[Check how to do it here](https://confluence.atlassian.com/bitbucket/grant-repository-access-to-users-and-groups-221449716.html)**
-* Send an e-mail to **m-cs-recruitment@backbase.com** with your info and repo once the development is done
+1.**di:** It contains the files required by Dagger
+2.**model:** It contains all data model classes
+3.**network:** It contains all networking ralated classes and interfaces
+4.**repository:** It contains repository classes
+5.**ui:** View classes along with their corresponding ViewModel.
+6.**utils:** Utility classes.
 
-Please remember to work with small commits, it help us to see how you improve your code :)
+##Tech stack & Open-source libraries
+
+- Minimum SDK level 23
+- Kotlin based + Coroutines for asynchronous.
+- JetPack
+  - LiveData - notify domain layer data to views.
+  - Lifecycle - dispose of observing data when lifecycle state changes.
+  - ViewModel - UI related data holder, lifecycle aware.
+- Architecture
+  - MVVM Architecture (View -. ViewModel - Model)
+- Repository pattern
+- Hilt - dependency injection, With Hilt, you get a better runtime performance and compile-time correctness, scalability and Android Studio support also Google recommends Hilt for Android apps.
+- Retrofit2 - construct the REST APIs.
+- Moshi codegen- modern JSON library for Android, faster and most Kotlin-friendly library you can use to parse JSON files
+- OkHttp3 - implementing interceptor, logging and mocking web server.
+- Glide - loading images.
+
+
+
+
+
